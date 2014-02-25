@@ -54,8 +54,9 @@ changemarkdown = function(html) {
 
 var toggleVisibility;
 toggleVisibility = function() {
-    post_body.toggle();
-    renderedhtml.toggle();
+    post_body.addClass("animated fadeOutLeft");
+    renderedhtml.show();
+    renderedhtml.addClass("animated fadeInRight");
 }
 
 $(document).ready(ready);

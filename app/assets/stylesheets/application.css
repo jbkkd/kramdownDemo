@@ -11,3 +11,10 @@
  *= require_self
  *= require_tree .
  */
+
+.rendered {
+    position: relative;
+    top: -54px;
+    left: 7px;
+    opacity: 0;
+}
