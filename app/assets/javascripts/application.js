@@ -31,7 +31,7 @@ sendMarkdown = function() {
     if (post_body.css("display") != "none") {
         data = { text: $("#post_body").val()};
         $.ajax({
-            url: "getkramdown",
+            url: "/posts/getkramdown",
             type: "post",
             dataType: "html",
             data: data

@@ -18,3 +18,12 @@
     left: 7px;
     opacity: 0;
 }
+pre {
+    overflow: auto;
+    border: solid 1px #9AACAE;
+    font-family: courier,Georgia,Serif;
+    color: $(body.text.color);
+    background: #EFEFEF;
+    margin: 5px;
+    padding: 5px;
+}
