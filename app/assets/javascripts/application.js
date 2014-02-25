@@ -15,18 +15,31 @@
 //= require turbolinks
 //= require_tree .
 var ready;
+var post_body;
 ready = function(){
-    //alert("omer");
+    post_body = $("#post_body");
     $("#clickable").on("click", function () {
         data = { text: $("#post_body").val()};
         $.ajax({
             url: "getkramdown",
             type: "post",
+            dataType: "html",
             data: data
+        }).done(function(html){
+            changemarkdown(html);
+        }).fail(function(e){
+            alert(e);
         });
     });
 };
 
+var changemarkdown;
+changemarkdown = function(html) {
+    post_body.hide();
+    var renderedhtml = $("#renderedhtml");
+    renderedhtml.html(html);
+    renderedhtml.show();
+}
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
