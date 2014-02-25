@@ -16,9 +16,19 @@
 //= require_tree .
 var ready;
 var post_body;
+var renderedhtml;
+
 ready = function(){
     post_body = $("#post_body");
+    renderedhtml =  $("#renderedhtml");
     $("#clickable").on("click", function () {
+        sendMarkdown();
+    });
+};
+
+var sendMarkdown;
+sendMarkdown = function() {
+    if (post_body.css("display") != "none") {
         data = { text: $("#post_body").val()};
         $.ajax({
             url: "getkramdown",
@@ -30,15 +40,22 @@ ready = function(){
         }).fail(function(e){
             alert(e);
         });
-    });
-};
+    }
+    else {
+        toggleVisibility();
+    }
+}
 
 var changemarkdown;
 changemarkdown = function(html) {
-    post_body.hide();
-    var renderedhtml = $("#renderedhtml");
     renderedhtml.html(html);
-    renderedhtml.show();
+    toggleVisibility();
+}
+
+var toggleVisibility;
+toggleVisibility = function() {
+    post_body.toggle();
+    renderedhtml.toggle();
 }
 
 $(document).ready(ready);
