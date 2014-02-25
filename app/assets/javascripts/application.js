@@ -54,9 +54,18 @@ changemarkdown = function(html) {
 
 var toggleVisibility;
 toggleVisibility = function() {
-    post_body.addClass("animated fadeOutLeft");
-    renderedhtml.show();
-    renderedhtml.addClass("animated fadeInRight");
+    if (post_body.hasClass("fadeOutLeft")) {
+        post_body.removeClass("fadeOutLeft");
+        renderedhtml.removeClass("fadeInRight");
+        post_body.addClass("fadeInRight");
+        renderedhtml.addClass("fadeOutLeft");
+    }
+    else {
+        post_body.removeClass("fadeInRight");
+        renderedhtml.removeClass("fadeOutLeft");
+        post_body.addClass("animated fadeOutLeft");
+        renderedhtml.addClass("animated fadeInRight");
+    }
 }
 
 $(document).ready(ready);
