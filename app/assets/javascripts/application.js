@@ -54,17 +54,17 @@ changemarkdown = function(html) {
 
 var toggleVisibility;
 toggleVisibility = function() {
-    if (post_body.hasClass("fadeOutLeft")) {
-        post_body.removeClass("fadeOutLeft");
-        renderedhtml.removeClass("fadeInRight");
-        post_body.addClass("fadeInRight");
-        renderedhtml.addClass("fadeOutLeft");
+    if (post_body.hasClass("flipOutY")) {
+        post_body.removeClass("flipOutY");
+        renderedhtml.removeClass("fadeIn");
+        post_body.addClass("flipInY");
+        renderedhtml.addClass("fadeOut");
     }
     else {
-        post_body.removeClass("fadeInRight");
-        renderedhtml.removeClass("fadeOutLeft");
-        post_body.addClass("animated fadeOutLeft");
-        renderedhtml.addClass("animated fadeInRight");
+        post_body.removeClass("flipInY");
+        renderedhtml.removeClass("fadeOut");
+        post_body.addClass("animated flipOutY");
+        renderedhtml.addClass("animated fadeIn");
     }
 }
 

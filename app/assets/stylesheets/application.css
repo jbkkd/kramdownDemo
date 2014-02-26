@@ -12,12 +12,23 @@
  *= require_tree .
  */
 
-.rendered {
+#flip-toggle{
     position: relative;
-    top: -54px;
-    left: 7px;
-    opacity: 0;
+    height:35px;
 }
+
+textarea {
+    position: absolute;
+    z-index: 1;
+}
+
+.rendered {
+    position: absolute;
+    top: -10px;
+    left: 7px;
+    z-index: -1;,
+}
+
 pre {
     overflow: auto;
     border: solid 1px #9AACAE;
@@ -26,4 +37,9 @@ pre {
     background: #EFEFEF;
     margin: 5px;
     padding: 5px;
+}
+
+#clickable {
+    cursor: pointer;
+    display: block;
 }
