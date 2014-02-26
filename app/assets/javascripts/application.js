@@ -28,12 +28,12 @@ ready = function(){
 
 var sendMarkdown;
 sendMarkdown = function() {
-    if (post_body.css("display") != "none") {
+    if (!post_body.hasClass("flipOutY")) {
         data = { text: $("#post_body").val()};
         $.ajax({
             url: "/posts/getkramdown",
             type: "post",
-            dataType: "html",
+            dataType: "text",
             data: data
         }).done(function(html){
             changemarkdown(html);
@@ -49,22 +49,23 @@ sendMarkdown = function() {
 var changemarkdown;
 changemarkdown = function(html) {
     renderedhtml.html(html);
-    toggleVisibility();
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub, renderedhtml[0]], toggleVisibility);
+    //toggleVisibility();
 }
 
 var toggleVisibility;
 toggleVisibility = function() {
     if (post_body.hasClass("flipOutY")) {
         post_body.removeClass("flipOutY");
-        renderedhtml.removeClass("fadeIn");
+        renderedhtml.removeClass("flipInY");
         post_body.addClass("flipInY");
-        renderedhtml.addClass("fadeOut");
+        renderedhtml.addClass("flipOutY");
     }
     else {
         post_body.removeClass("flipInY");
-        renderedhtml.removeClass("fadeOut");
+        renderedhtml.removeClass("flipOutY");
         post_body.addClass("animated flipOutY");
-        renderedhtml.addClass("animated fadeIn");
+        renderedhtml.addClass("animated flipInY");
     }
 }
 

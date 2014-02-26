@@ -14,8 +14,9 @@ class PostsController < ApplicationController
 
   def kramdownthis
     respond_to do |format|
-      # format.html # show.html.erb
-      format.js { render :inline => view_context.kramdown(params[:text]) }
+      #format.html { render :html => view_context.kramdown(params[:text]) }
+      logger.debug view_context.kramdown(params[:text])
+      format.js { render :text => view_context.kramdown(params[:text]) }
     end
   end
 
