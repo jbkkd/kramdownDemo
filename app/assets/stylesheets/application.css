@@ -46,6 +46,10 @@ pre {
     display: block;
 }
 
+.tags {
+    opacity: 0;
+}
+
 .tag {
     margin-right: 5px;
     color: $(body.text.color);

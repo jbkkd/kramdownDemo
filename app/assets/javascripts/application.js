@@ -88,7 +88,9 @@ getTags = function() {
 
 var suggestTags;
 suggestTags = function(html) {
+    $("#tags").removeClass("fadeIn");
     $("#tags").html(html);
+    $("#tags").addClass("fadeIn");
 }
 
 $(document).ready(ready);
