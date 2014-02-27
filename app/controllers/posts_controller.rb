@@ -20,6 +20,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def getTags
+    sleep(2)
+    respond_to do |format|
+      format.js {render :text => '<span id="tag1" class="tag">Tag 1</span><span id="tag2" class="tag">Tag 2</span>' }
+    end
+  end
+
   # GET /posts/new
   def new
     @post = Post.new

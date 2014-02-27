@@ -45,3 +45,12 @@ pre {
     cursor: pointer;
     display: block;
 }
+
+.tag {
+    margin-right: 5px;
+    color: $(body.text.color);
+    background: #eeeeee;
+    font-family: sans-serif;
+    border: solid 1px #9AACAE;
+    overflow: auto;
+}

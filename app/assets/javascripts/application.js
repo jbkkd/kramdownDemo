@@ -17,6 +17,7 @@
 var ready;
 var post_body;
 var renderedhtml;
+var timeoutId = 0;
 
 ready = function(){
     post_body = $("#post_body");
@@ -24,12 +25,16 @@ ready = function(){
     $("#clickable").on("click", function () {
         sendMarkdown();
     });
+    post_body.keypress(function() {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(getTags, 200);
+    })
 };
 
 var sendMarkdown;
 sendMarkdown = function() {
     if (!post_body.hasClass("flipOutY")) {
-        data = { text: $("#post_body").val()};
+        data = { text: post_body.val()};
         $.ajax({
             url: "/posts/getkramdown",
             type: "post",
@@ -50,7 +55,6 @@ var changemarkdown;
 changemarkdown = function(html) {
     renderedhtml.html(html);
     MathJax.Hub.Queue(["Typeset",MathJax.Hub, renderedhtml[0]], toggleVisibility);
-    //toggleVisibility();
 }
 
 var toggleVisibility;
@@ -67,6 +71,24 @@ toggleVisibility = function() {
         post_body.addClass("animated flipOutY");
         renderedhtml.addClass("animated flipInY");
     }
+}
+
+var getTags;
+getTags = function() {
+    data = { text: post_body.val()};
+    $.ajax({
+        url:"/posts/gettags",
+        type: "post",
+        dataType: "html",
+        data: data
+    }).done(function(html){
+        suggestTags(html);
+    });
+}
+
+var suggestTags;
+suggestTags = function(html) {
+    $("#tags").html(html);
 }
 
 $(document).ready(ready);
